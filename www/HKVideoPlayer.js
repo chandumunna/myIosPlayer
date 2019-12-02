@@ -12,4 +12,7 @@ HKVideoPlayer.play = function(url) {
 HKVideoPlayer.playLocal = function(url) {
     exec(null, null, 'HKVideoPlayer', 'playLocal', [url]);
 };
+HKVideoPlayer.playYoutubeId = function(videoid) {
+    exec(null, null, 'HKVideoPlayer', 'playYoutubeId', [videoid]);
+};
 module.exports = HKVideoPlayer;
