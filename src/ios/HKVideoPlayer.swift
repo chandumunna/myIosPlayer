@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import AVKit
 import AVFoundation
+import XCDYouTubeClient
 //import Cordova
 
 @objc(HKVideoPlayer) class HKVideoPlayer: CDVPlugin {
@@ -43,6 +44,21 @@ import AVFoundation
         let player = AVPlayer(url: videoURL)
         self.present(player: player)
         
+    }
+    @objc(playYoutubeId:)
+    func playYoutubeId(command:CDVInvokedUrlCommand){
+        guard let videoid = command.argument(at: 0) as? String else {
+            return
+        }
+        XCDYouTubeClient.default().getVideoWithIdentifier("KHIJmehK5OA") { (video: XCDYouTubeVideo?, error: Error?) in
+            if let streamURL = video?.streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] {
+                let player = AVPlayer(url: streamURL)
+                self.present(player: player)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+
     }
 
     private func present(player:AVPlayer){
