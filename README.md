@@ -26,5 +26,8 @@ HKVideoPlayer.play("full path");
 // Play Video from Assets
 HKVideoPlayer.playLocal("video.mp4");
 
+// Play Video from youtube id
+HKVideoPlayer.playYoutubeId("video.mp4");
+
 
 ```
